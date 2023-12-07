@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+        integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+
+    <form onsubmit="saveUser()">
+        <div>
+            <label for="email"></label>
+            <input type="email" name="email" id="userEmail" placeholder="Enter Your email" autofocus required>
+        </div>
+        <div>
+            <label for="password"></label>
+            <input type="password" name="password" id="userPass" placeholder="Enter your password" autofocus required>
+        </div>
+        <button type="submit">submit</button>
+    </form>
+
+    <script>
+        const url = "http://localhost:5500/users";
+        const getUrl = "http://localhost:5500/products";
+
+        function saveUser() {
+            event.preventDefault()
+            let email = document.getElementById('userEmail').value;
+            let pass = document.getElementById('userPass').value;
+
+            // Below the code for set to the DB
+            const url = "http://localhost:5500/users";
+            const getUrl = "http://localhost:5500/products";
+
+            // Below the code for psst the data
+            const postData = {
+                "email": email,
+                "pass": pass
+            }
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(postData)
+            })
+                .then(res => {
+                    return res.json();
+                })
+                .then(res => {
+                    console.log(res);
+                })
+        }
+
+        // Below the code for the get the data
+        fetch(url).then(res => {
+            if(!res.ok){
+                throw new Error('Something error while fetching ')
+            }
+            return res.json();
+        })
+            .then(res => {
+                console.log(res);
+            })
+            .catch(res => {
+                console.log(res);
+            })
+    </script>
+</body>
+
+</html>
