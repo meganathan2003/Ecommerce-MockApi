@@ -14,53 +14,21 @@
       "email": "Vickey@gmail.com",
       "pass": "cikey",
       "id": 3
-    }
-  ],
-  "products": [
-    {
-      "id": 1,
-      "product_name": "Attitude is everything",
-      "price": 400
     },
     {
-      "id": 2,
-      "product_name": "Attitude is everything",
-      "price": 500
+      "email": "dinesh@gmail.com",
+      "pass": "Dinehs@123",
+      "id": 4
     },
     {
-      "id": 3,
-      "product_name": "Eat that frog",
-      "price": 200
+      "email": "Saran@gamil.com",
+      "pass": "Saran@123",
+      "id": 5
     },
     {
-      "id": 4,
-      "product_name": "Disney plus hotstar",
-      "price": 800
-    },
-    {
-      "id": 5,
-      "product_name": "You can Win",
-      "price": 600
-    },
-    {
-      "id": 6,
-      "product_name": "Go to the monk mdoe",
-      "price": 600
-    },
-    {
-      "id": 7,
-      "product_name": "Go to the monk mdoe",
-      "price": 600
-    }
-  ],
-  "orders": [
-    {
-      "Product_name": "Attitude is everything",
-      "price": 500,
-      "CreatedTime": "08/12/2023",
-      "quantity": 1,
-      "status": "CANCELLED",
-      "id": 1
+      "email": "dinesh@gmail.com",
+      "pass": "Dinesh@123",
+      "id": 6
     }
   ]
 }

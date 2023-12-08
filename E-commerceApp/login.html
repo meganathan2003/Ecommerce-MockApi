@@ -50,15 +50,15 @@
                 },
                 body: JSON.stringify(postData)
             }).then(res => {
-                    return res.json();
+                return res.json();
             }).then(res => {
-                    console.log(res);
+                console.log(res);
             })
         }
 
         // Below the code for the get the data
         fetch(url).then(res => {
-            if(!res.ok){
+            if (!res.ok) {
                 throw new Error('Something error while fetching ')
             }
             return res.json();
@@ -70,6 +70,8 @@
                 console.log(res);
             })
     </script>
+    <script type="module" src="connectionUtil/connection.js"></script>
+
 </body>
 
 </html>
