@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All - Orders</title>
 </head>
+
 <body>
 
     <h2 style="text-align: center;">Here you can see your all orders</h2>
@@ -17,23 +19,94 @@
                 <th>SNO</th>
                 <th>Product Name</th>
                 <th>Price</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
+        <tbody id="tbl-body">
+            <!-- <tr>
+                 <td>1</td>
                 <td>Eat that frog</td>
                 <td>500.00</td>
-                <td><button>Cancel Order</button></td>
-            </tr>
+                <td><button>Cancel Order</button></td> 
+            </tr> -->
         </tbody>
     </table>
 
 
     <script>
+
+        const url = "http://localhost:5500/orders";
         // below the code for show the order into the db
-        
+        function loadOrder() {
+            fetch(url).then(res => {
+                if (!res.ok) {
+                    // console.log("status", res.status);
+                    throw new console.error('Something error while fetching the data');
+                }
+                return res.json();
+            })
+                .then(res => {
+                    console.log(res);
+                    showOrder(res);
+                })
+                .catch(res => {
+                    console.log(res);
+                })
+
+        }
+
+        function showOrder(products) {
+            let content = '';
+            for (pro of products) {
+                let btn = `<button onclick = "updateStatus('${pro.id}')">Cancel Order</button>`;
+                if (pro.status === 'CANCELLED') {
+                    pro.status = 'CANCELLED';
+                    btn = '';
+                }
+                content += `<tr><td>${pro.id}</td><td>${pro.Product_name}</td><td>${pro.price}</td><td>${pro.status}</td><td>${btn}</td></tr>`;
+            }
+            document.querySelector('#tbl-body').innerHTML = content;
+        }
+
+        // Below the code for cancel the order
+        function updateStatus(ProductId) {
+            if (confirm('are u sure cancel this product?')) {
+                // let index = orders.findIndex(obj => obj.id == id);
+                // console.log(index);
+                if (ProductId < 0) {
+                    alert("No data matched for this id:" + ProductId);
+                }
+                else {
+                    // Below the code for put the data to db.json
+                    const putData = {
+                        status: "CANCELLED",
+                        createdDate: new Date().toLocaleDateString()
+                    }
+                    const requestOption = {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(putData),
+                    };
+                    const updateUrl = url + '/' + ProductId; // localhost/orders/1
+                    fetch(updateUrl, requestOption).then(res => {
+                        if (!res.ok) {
+                            throw new Error('Network reponse was not ok')
+                        }
+                        return res.json();
+                    }).then(res => {
+                        console.log(res);
+                    }).catch(res => {
+                        console.log("Error :" + res);
+                    })
+
+                }
+            }
+        }
+        loadOrder();
     </script>
 </body>
+
 </html>

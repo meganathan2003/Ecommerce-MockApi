@@ -49,13 +49,11 @@
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify(postData)
-            })
-                .then(res => {
+            }).then(res => {
                     return res.json();
-                })
-                .then(res => {
+            }).then(res => {
                     console.log(res);
-                })
+            })
         }
 
         // Below the code for the get the data

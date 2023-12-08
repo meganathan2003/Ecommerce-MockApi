@@ -9,6 +9,7 @@
         integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
 
     <!-- Below the code for create the table products shown  -->
@@ -36,9 +37,8 @@
 
     <script>
 
+        const url = "http://localhost:5500/products"; // api url
         function loadProducts() {
-            const url = "http://localhost:5500/products";
-
             // below the code for ajax lib using the axios keyword
             // axios.get(url).then(result => {
             //     let products = result.data;
@@ -46,11 +46,11 @@
             //     displayProducts(products);
             // })
 
-            fetch(url).then(res => {
+            fetch(url).then(res => { // get method
                 if (!res.ok) {
                     throw new Error('Something Error while fetching')
                 }
-               return res.json();
+                return res.json();
             })
                 .then(res => {
                     displayProducts(res);
@@ -92,7 +92,7 @@
 
             const qty = 1;
             const Price = qty * price;
-            const createdDate = new Date().toLocaleDateString();
+            const createdDate = new Date().toLocaleDateString(); // 
             console.log(createdDate);
 
             const product = {
@@ -100,14 +100,30 @@
                 "price": Price,
                 "CreatedTime": createdDate,
                 "quantity": qty,
+                "status": 'ORDERED'
             }
 
-            const url = "http://localhost:5500/orders";
+            const url = "http://localhost:5500/orders"; // api url
 
-            axios.post(url, product)
+            axios.post(url, product) // using the axios
                 .then(res => {
                     console.log("Response", res.data);
                 })
+
+            // const requestOption = {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(product)
+            // }
+
+            // fetch(url,requestOption).then(res =>{
+            //     return res.json();
+            // })
+            // .then(res =>{
+            //     console.log(res);
+            // })
             alert("Order placed SuccessFully");
         };
     </script>

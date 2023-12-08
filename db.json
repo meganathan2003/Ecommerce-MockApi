@@ -2,13 +2,18 @@
   "users": [
     {
       "email": "dinesh@gmail.com",
-      "pass": "Dinesh@123",
+      "pass": "Dinehs@123",
       "id": 1
     },
     {
-      "email": "meganathan@gmail.com",
-      "pass": "Meganathan",
+      "email": "Saran@gamil.com",
+      "pass": "Saran",
       "id": 2
+    },
+    {
+      "email": "Vickey@gmail.com",
+      "pass": "cikey",
+      "id": 3
     }
   ],
   "products": [
@@ -52,16 +57,28 @@
     {
       "Product_name": "Attitude is everything",
       "price": 400,
-      "CreatedTime": "07/12/2023",
+      "CreatedTime": "08/12/2023",
       "quantity": 1,
-      "id": 1
+      "status": "CANCELLED",
+      "id": 1,
+      "createdDate": "08/12/2023"
+    },
+    {
+      "Product_name": "Attitude is everything",
+      "price": 500,
+      "CreatedTime": "08/12/2023",
+      "quantity": 1,
+      "status": "CANCELLED",
+      "id": 2,
+      "createdDate": "08/12/2023"
     },
     {
       "Product_name": "Eat that frog",
       "price": 200,
-      "CreatedTime": "07/12/2023",
+      "CreatedTime": "08/12/2023",
       "quantity": 1,
-      "id": 2
+      "status": "ORDERED",
+      "id": 3
     }
   ]
 }
