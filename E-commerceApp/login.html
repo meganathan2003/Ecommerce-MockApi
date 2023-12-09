@@ -12,7 +12,7 @@
 
 <body>
 
-    <form onsubmit="saveUser()">
+    <form id="registrationForm" action="/E-commerceApp/connectionUtil/submitUserData" method="POST">
         <div>
             <label for="email"></label>
             <input type="email" name="email" id="userEmail" placeholder="Enter Your email" autofocus required>
@@ -21,10 +21,10 @@
             <label for="password"></label>
             <input type="password" name="password" id="userPass" placeholder="Enter your password" autofocus required>
         </div>
-        <button type="submit">submit</button>
+        <input type="submit" value="Login">
     </form>
 
-    <script>
+    <!-- <script>
         const url = "http://localhost:5500/users";
         const getUrl = "http://localhost:5500/products";
 
@@ -70,7 +70,7 @@
                 console.log(res);
             })
     </script>
-    <script type="module" src="connectionUtil/connection.js"></script>
+    <script type="module" src="connectionUtil/connection.js"></script> -->
 
 </body>
 
